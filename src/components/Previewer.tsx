@@ -13,8 +13,8 @@ const Previewer = ({ content }: Props) => {
     },
   });
   const renderer = new marked.Renderer();
-  renderer.link = function (href, text) {
-    return '<a target="_blank" href="' + href + '">' + text + "</a>";
+  renderer.link = function (href, title, text) {
+    return '<a target="_blank" title='+title+'href="' + href + '">' + text + "</a>";
   };
   return (
     <div
