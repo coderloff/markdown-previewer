@@ -1,6 +1,7 @@
 import { useState } from "react";
-import Edtior from "./components/Edtior";
+import Editor from "./components/Editor";
 import Previewer from "./components/Previewer";
+import "./App.css";
 
 const App = () => {
   const defaultContent = `
@@ -48,15 +49,20 @@ const App = () => {
   
   ![freeCodeCamp Logo](https://cdn.freecodecamp.org/testable-projects-fcc/images/fcc_secondary.svg)
   
-`
+`;
   const [content, setContent] = useState<string>(defaultContent);
   const handleTextAreaChange = (event: any) => {
     setContent(event?.target.value);
   };
   return (
     <>
-      <Edtior content={content} handleTextAreaChange={handleTextAreaChange} />
-      <Previewer content={content}/>
+      <div className="container">
+        <Editor content={content} handleTextAreaChange={handleTextAreaChange} />
+        <Previewer content={content} />
+      </div>
+      <div className="attribute">
+        <h3>by Coderloff</h3>
+      </div>
     </>
   );
 };

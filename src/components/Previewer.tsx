@@ -14,15 +14,27 @@ const Previewer = ({ content }: Props) => {
   });
   const renderer = new marked.Renderer();
   renderer.link = function (href, title, text) {
-    return '<a target="_blank" title='+title+'href="' + href + '">' + text + "</a>";
+    return (
+      '<a target="_blank" title=' +
+      title +
+      'href="' +
+      href +
+      '">' +
+      text +
+      "</a>"
+    );
   };
   return (
-    <div
-      id="preview"
-      dangerouslySetInnerHTML={{
-        __html: marked(content, {renderer:renderer}),
-      }}
-    />
+    <div className="area preview-area">
+      <h2 className="title">Preview</h2>
+      <span className="bar"></span>
+      <div
+        id="preview"
+        dangerouslySetInnerHTML={{
+          __html: marked(content, { renderer: renderer }),
+        }}
+      />
+    </div>
   );
 };
 
